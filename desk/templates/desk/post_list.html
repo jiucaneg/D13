@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title %}
+All posts - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <div class="card mb-4">
+    <div class="card-header">
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Хотите создать новый пост? Не проблема! <a href="{% url 'post_add' %}" class="btn btn-success">Создать</a></h5>
+
+    </div>
+    <div class="card-footer text-muted">
+    </div>
+</div>
+
+    {% for post in post_list %}
+        {% include 'desk/includes/post_preview_template.html' %}
+    {% endfor %}
+
+{% endblock %}

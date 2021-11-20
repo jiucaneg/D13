@@ -1,0 +1,12 @@
+
+{% extends 'base.html' %}
+
+{% load bootstrap %}
+
+{% block title %}
+    User - {{ user_detail.username }}
+{% endblock %}
+
+{% block content %}
+    {{ user_detail.username }}
+{% endblock %}

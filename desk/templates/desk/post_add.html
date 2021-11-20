@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% load bootstrap %}
+
+{% block title %}
+    Add post - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+    <form action="{% url 'post_add' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+    {% bootstrap_form form layout='inline' %}
+
+        {{ formset|bootstrap}}
+    {% buttons %}
+        <button type="submit" class="btn btn-primary mt-2">Создать пост</button>
+    {% endbuttons %}
+    </form>
+{% endblock %}

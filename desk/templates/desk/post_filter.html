@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% load bootstrap %}
+
+{% block title %}
+    All posts - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+    <div class="mb-5">
+        <form method="GET">
+            {{ filter.form|bootstrap }}
+            <button type="submit" class="btn btn-primary mt-2">Найти</button>
+        </form>
+    </div>
+
+    {% for post in filter.qs %}
+        {% if post.author is request.user %}
+            {% include 'desk/includes/post_response_preview.html' %}
+        {% endif %}
+    {% endfor %}
+
+{% endblock %}

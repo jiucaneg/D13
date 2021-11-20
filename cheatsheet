@@ -1,0 +1,7 @@
+allauth templates
+https://github.com/pennersr/django-allauth/tree/master/allauth/templates
+
+{% load bootstrap %} https://pypi.org/project/django-bootstrap4/
+
+{{ post.get_absolute_url }}
+        {{ form|bootstrap }}

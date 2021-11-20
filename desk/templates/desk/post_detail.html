@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+
+
+{% block title %}
+    {{ post_detail.title }} - {{ block.super }}
+{% endblock %}
+
+{% block content %}
+
+
+    <a href="{% url 'posts_list' %}" class="btn btn-primary mb-2">Ко всем постам</a>
+
+
+    <div class="card mt-2 p-4">
+        <div><span class="pub-info">Дата публикации: {{ post_detail.pub_date|date:'d M Y - h:m' }}</span></div>
+
+        <h1 class="mb-4">{{ post_detail.title }}</h1>
+        {{ post_detail.text|safe }}
+        {% for img in post_detail.shots.all %}
+            <img width="200" src="{{ img.image.url }}" alt="">
+        {% endfor %}
+
+    </div>
+
+    <form method="POST" class="post-form">
+        {% csrf_token %}
+        {% bootstrap_form form layout='inline' %}
+
+        <button type="submit" class="btn btn-primary mt-2 mb-5">Отправить</button>
+    </form>
+
+    {% for response in post_detail.new_responses %}
+        {% include 'desk/includes/response_template.html' %}
+    {% endfor %}
+
+{% endblock %}

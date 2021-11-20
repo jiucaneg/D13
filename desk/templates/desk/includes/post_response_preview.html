@@ -1,0 +1,33 @@
+<div class="card mb-4">
+    <div class="card-header">
+        {{ post.pub_date|date:'M d Y - h:m' }}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{ post.title }}</h5>
+
+        <a href="{{ post.get_absolute_url }}" class="btn btn-primary">Читать</a>
+    </div>
+    <div class="card-footer text-muted">
+        <b>Категория: </b> {{ post.get_category_display }}
+    </div>
+    {% for response in post.responses.all %}
+        {% if response.status is None or response.status %}
+            <hr>
+            <div class="card-header">
+                <p>{{ response.text }}</p>
+                <p>{{ response.author.username }}</p>
+                {% if response.status is None %}
+
+                    <a href="/filter/agree/{{ response.id }}" class="btn btn-primary">Принять</a>
+                    <a href="/filter/disagree/{{ response.id }}" class="btn btn-primary">Отклонить</a>
+
+                {% elif response.status %}
+                    {{ response.get_status_display }}
+
+                {% endif %}
+
+
+            </div>
+        {% endif %}
+    {% endfor %}
+</div>

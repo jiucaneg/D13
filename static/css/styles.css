@@ -1,0 +1,9 @@
+.pub-info {
+    float: right !important;
+    font-style: italic;
+    color: lightslategray;
+}
+
+.signup{
+    margin-left: 25px;
+}

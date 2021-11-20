@@ -1,0 +1,12 @@
+<div class="card mb-4" style="margin-top: 5px;">
+    <div class="card-header">
+        {{ response.pub_date|date:'M d Y - h:m' }}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{ presponse.author.username }}</h5>
+        <p class="card-text">{{ response.text }} </p>
+    </div>
+    <div class="card-footer text-muted">
+            <b>Автор: </b> {{ response.author.username }}
+    </div>
+</div>
